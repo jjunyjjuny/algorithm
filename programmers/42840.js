@@ -59,7 +59,6 @@ function solution(answers) {
 
 // Another's solution. 
 // filter를 쓸거라곤 생각 못 했다. 훨씬 더 간결하고 좋아보인다 
-
 function solution(answers) {
   var answer = [];
   var a1 = [1, 2, 3, 4, 5];
