@@ -11,9 +11,9 @@ var answer = [];
 // after 2021.01.20
 
 function solution(array, commands) {
-    return commands.reduce((acc, curr)=>{
-        const [i,j,k] = curr
-        acc.push(array.slice(i-1,j).sort((a,b) => a-b)[k-1])
-        return acc
-    }, [])
+    return commands.map(el => {
+        const [i,j,k] = el;
+        return array.slice(i-1,j).sort((a,b) => a-b)[k-1]
+    })
+    
 }
