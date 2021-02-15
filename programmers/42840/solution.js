@@ -1,5 +1,3 @@
-// https://programmers.co.kr/learn/courses/30/lessons/42840?language=javascript
-// 모의고사
 
 // before
 function solution(answers) {
