@@ -6,8 +6,8 @@
 
 ## 풀이
 
-이진수로 바꾸는 convertBinary함수를 사용한다. 변환하면서 Boolean으로
-1이면 true, 0이면 false로 변환해서 이후에 사용함.
+이진수로 바꾸는 convertBinary함수를 작성해서 사용한다. 
+변환하면서 Boolean으로 1이면 true, 0이면 false로 변환해서 이후에 사용함.
 
 변환 후 map의 중첩에서 index를 i, j로 뽑아서 다른 배열과 비교후 #이나 공백 넣고
 마지막에 join! 
