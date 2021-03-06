@@ -1,4 +1,4 @@
-# programmers Lv1
+# programmers Lv2
 
 ## 소수 찾기
 
