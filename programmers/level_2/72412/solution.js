@@ -16,56 +16,75 @@ const query = [
   "- and - and - and - 150",
 ];
 
+// function solution(info, query) {
+//   const infoObj = info.reduce((acc, curr) => {
+//     const keys = curr.split(" ");
+//     addProp(acc, keys);
+//     return acc;
+//   }, {});
+
+//   return query.reduce((acc, curr) => {
+//     const keys = curr.split(/ and | /);
+//     const result = search(infoObj, keys);
+//     return [...acc, result.length];
+//   }, []);
+// }
+// function search(obj, targetKeys) {
+//   const key = targetKeys.shift();
+//   if (!isNaN(key)) {
+//     return obj.filter((el) => +el >= key);
+//   }
+//   if (key === "-") {
+//     const keys = Object.keys(obj);
+//     return keys.reduce((acc, key) => {
+//       const nextObj = obj[key];
+//       return [...acc, ...search(nextObj, targetKeys.slice())];
+//     }, []);
+//   }
+
+//   if (key in obj) {
+//     const nextObj = obj[key];
+//     return search(nextObj, targetKeys);
+//   } else {
+//     return [];
+//   }
+// }
+
+// function addProp(obj, targetKeys) {
+//   const key = targetKeys.shift();
+//   const nextKey = targetKeys[0];
+//   if (!isNaN(nextKey)) {
+//     key in obj ? obj[key].push(nextKey) : (obj[key] = [nextKey]);
+//     return;
+//   }
+//   if (key in obj) {
+//     const nextObj = obj[key];
+//     addProp(nextObj, targetKeys);
+//   } else {
+//     obj[key] = {};
+//     addProp(obj[key], targetKeys);
+//   }
+// }
+
 function solution(info, query) {
   const infoObj = info.reduce((acc, curr) => {
-    const keys = curr.split(" ");
-    addProp(acc, keys);
+    const spl = curr.split(/ and | /);
+    const value = spl.pop();
+    const key = spl.join("");
+    key in acc ? acc[key].push(value) : (acc[key] = [value]);
     return acc;
   }, {});
 
-  return query.reduce((acc, curr) => {
-    const keys = curr.split(/ and | /);
-    const result = search(infoObj, keys);
-    acc.push(result.length);
-    return acc;
+  for (const [key, values] of Object.entries(infoObj)) {
+    infoObj[key] = values.sort((a, b) => a - b);
+  }
+
+  query.forEach((curr) => {
+    const spl = curr.split(/ and | /);
+    const value = spl.pop();
+    const key = spl.join("");
+    for (const [key, values] of Object.entries(infoObj)) {
+    }
   }, []);
 }
-function search(obj, targetKeys) {
-  const key = targetKeys.shift();
-  if (!isNaN(key)) {
-    return obj.filter((el) => +el >= key);
-  }
-  if (key === "-") {
-    const keys = Object.keys(obj);
-    return keys.reduce((acc, key) => {
-      const nextObj = obj[key];
-      acc.push(...search(nextObj, targetKeys.slice()));
-      return acc;
-    }, []);
-  }
-
-  if (key in obj) {
-    const nextObj = obj[key];
-    return search(nextObj, targetKeys);
-  } else {
-    return [];
-  }
-}
-
-function addProp(obj, targetKeys) {
-  const key = targetKeys.shift();
-  const nextKey = targetKeys[0];
-  if (!isNaN(nextKey)) {
-    key in obj ? obj[key].push(nextKey) : (obj[key] = [nextKey]);
-    return;
-  }
-  if (key in obj) {
-    const nextObj = obj[key];
-    addProp(nextObj, targetKeys);
-  } else {
-    obj[key] = {};
-    addProp(obj[key], targetKeys);
-  }
-}
-
-console.log(solution(info, query));
+solution(info, query);
