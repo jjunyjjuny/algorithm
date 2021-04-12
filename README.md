@@ -65,9 +65,23 @@
 
 ## 객체
 
+### 해당 값이 있는지 없는지
+
+- key in obj 
+
+### 객체의 키, 값 추출
+
+- 키 : Object.keys(obj)
+- 값 : Object.values(obj)
+- [키, 값] : Object.entries(obj)
+
 <br/>
 
 ## 숫자
+
+### 숫자인지 아닌지
+
+- isNaN(target) (숫자형이 아니면 true, 숫자면 false)
 
 <br/>
 
