@@ -229,5 +229,5 @@ function powerSet(arr) {
 }
 ```
 
-
 [관련문제](programmers/level_2/17677)
+[관련문제](programmers/level_2/42890)
